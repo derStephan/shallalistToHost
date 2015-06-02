@@ -31,7 +31,7 @@ hosts file looks like this:
 
 hosts file is tested to be working in windows. just drop it into c:\Windows\System32\drivers\etc\
 
-Please note: resuling file may very well exceed 30 MB with 900.000+ lines.
+Please note: resuling file may very well exceed 40 MB with 1.500.000+ lines.
 
 #usage with wget
 

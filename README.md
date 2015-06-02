@@ -1,5 +1,5 @@
-# shallalistToHost
-Generate a hosts file from URL-blacklist of shalla.de
+# shallalistToHosts
+Generate a hosts file from URL-blacklist of http://www.shallalist.de/
 
 Goal is to redirect domains of selected categories to 127.0.0.1 thus these domains are blocked on DNS basis
 

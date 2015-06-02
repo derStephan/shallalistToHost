@@ -31,3 +31,11 @@ hosts file looks like this:
 hosts file is tested to be working in windows. just drop it into c:\Windows\System32\drivers\etc\
 
 Please note: resuling file may very well exceed 30 MB with 900.000+ lines.
+
+#usage with wget
+
+You can do one of the following:
+
+1. change the very first variable in php file to meet your requirements. Now you can download your list with ```wget "<URLofPhpFile>?download" -O hosts```
+2. select your categories from the list and download the file manually. Open it in an editor. In the second line, there is the complete wget command for the selected categories. Just copy and paste it into terminal.
+

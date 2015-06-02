@@ -28,7 +28,7 @@ if(isset($_GET["download"]))
 	//add each selected category to hosts-file
 	foreach ($_GET["selectedCategories"] as $category)
 	{
-		assembleHostsFile($category,$tempFileName,$lastDownloadTime);
+		assembleHostsFile($category,$tempFileName);
 	}
 	
 	//deliver it as download
@@ -174,9 +174,8 @@ function saveDownloadTimeToFile()
 
 
 
-function assembleHostsFile($category,$hostsFilename,$lastDownloadTime)
+function assembleHostsFile($category,$hostsFilename)
 {
-	
 	$directory=glob("list/BL/$category");
 	
 	@$directory=$directory[0];
@@ -185,18 +184,18 @@ function assembleHostsFile($category,$hostsFilename,$lastDownloadTime)
 		return false;
 	
 	if(file_exists ("$directory/domains"))
-		writeDomainsToHosts("$directory/domains",$hostsFilename,$lastDownloadTime);
+		writeDomainsToHosts("$directory/domains",$hostsFilename);
 	else 
 	{
 		$subCategories=glob("$directory/*");
 		foreach($subCategories as $subCategory)
 		{
-			writeDomainsToHosts("$subCategory/domains",$hostsFilename,$lastDownloadTime);
+			writeDomainsToHosts("$subCategory/domains",$hostsFilename);
 		}
 	}
 }
 
-function writeDomainsToHosts($filePath,$hostsFilename,$lastDownloadTime)
+function writeDomainsToHosts($filePath,$hostsFilename)
 {
 	$domains=fopen($filePath,"r");
 	$hosts=fopen($hostsFilename,"a");

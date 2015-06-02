@@ -206,7 +206,8 @@ function writeDomainsToHosts($filePath,$hostsFilename)
 	fwrite($hosts,"#category: $filePath \n");
 	while($line = fgets($domains))
 	{
-		fwrite($hosts,"127.0.0.1 $line");
+		if(!filter_var(trim($line), FILTER_VALIDATE_IP))
+			fwrite($hosts,"127.0.0.1 $line");
 	}
 		
 	fclose($hosts);

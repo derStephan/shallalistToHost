@@ -38,13 +38,15 @@ if(isset($_GET["download"]))
 	header('Content-Disposition: attachment; filename="hosts"');
 	
 	//add some header information.
-	echo "#last list update: ".date("c",$lastDownloadTime)."\n";
-	echo "#For automated download use: wget \"http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]."\" -O hosts\n";
-	echo "#\n";
+	echo "#######################################################################################\n";
 	echo "#This file is derived from URL blacklist maintained by http://www.shallalist.de/\n";
 	echo "#using an automatic conversion tool: https://github.com/derStephan/shallalistToHosts\n";
 	echo "#Note: The author of this tool is in no way connected to shalla.\n";
 	echo "#\n";
+	echo "#creation date: ".date("c")."\n";
+	echo "#last list update: ".date("c",$lastDownloadTime)."\n";
+	echo "#For automated download use: wget \"http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]."\" -O hosts\n";
+	echo "#######################################################################################\n";
 	readfile($tempFileName);
 	
 	//delete temp file

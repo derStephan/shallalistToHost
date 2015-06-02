@@ -17,10 +17,10 @@ if($lastDownloadTime<strtotime("-1 week"))
 	@unlink("shallalist.tar");
 	downloadShallaList("http://www.shallalist.de/Downloads/shallalist.tar.gz");
 	unpackList();
+	
+	//update the time.
+	$lastDownloadTime=getLastUpdateTime();
 }
-
-//update the time.
-$lastDownloadTime=getLastUpdateTime();
 
 //if downloadbutton is hit
 if(isset($_GET["download"]))

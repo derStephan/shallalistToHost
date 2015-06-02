@@ -17,10 +17,8 @@ if($lastDownloadTime<strtotime("-1 week"))
 	@unlink("shallalist.tar");
 	downloadShallaList("http://www.shallalist.de/Downloads/shallalist.tar.gz");
 	unpackList();
-	saveDownloadTimeToFile();
 	
-	//update the time.
-	$lastDownloadTime=getLastUpdateTime();
+	$lastDownloadTime=saveDownloadTimeToFile();
 }
 
 //if downloadbutton is hit
@@ -174,6 +172,8 @@ function saveDownloadTimeToFile()
 	$fp=fopen("lastDownload","w");
 	fwrite($fp, time());
 	fclose($fp);
+	
+	return time();
 }
 
 

@@ -27,7 +27,7 @@ hosts file looks like this:
 #
 #creation date: 2015-06-02T13:09:47+02:00
 #last list update: 2015-06-02T11:17:01+02:00
-#For automated download use: wget "http://10.0.0.3/develop/shalla/shalla2hosts.php?download" -O hosts
+#For automated download use: wget "http://<URLofPhpFile>/shalla2hosts.php?download" -O hosts
 #######################################################################################
 #category: list/BL/adv/domains 
 127.0.0.1 000freexxx.com

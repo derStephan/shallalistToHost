@@ -45,7 +45,7 @@ Please note: resuling file may very well exceed 40 MB with 1.500.000+ lines.
 You can do one of the following:
 
 1. change the very first variable in php file to meet your requirements. Now you can download your list with ```wget "<URLofPhpFile>?download" -O hosts```
-2. select your categories from the list and download the file manually. Open it in an editor. In the second line, there is the complete wget command for the selected categories. Just copy and paste it into terminal.
+2. select your categories from the list and download the file manually. Open it in an editor. In last line of the header, there is the complete wget command for the selected categories. Just copy and paste it into terminal.
 
 #screenshot of category selection
 ![Screenshot](https://cloud.githubusercontent.com/assets/7764931/7933941/5688de0c-0923-11e5-8233-3b3bfb3c5e66.png)

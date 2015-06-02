@@ -27,3 +27,7 @@ hosts file looks like this:
 127.0.0.1 clipsguide.com
 ...
 ```
+
+hosts file is tested to be working in windows. just drop it into c:\Windows\System32\drivers\etc\
+
+Please note: resuling file may very well exceed 30 MB with 900.000+ lines.

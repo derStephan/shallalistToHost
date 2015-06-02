@@ -21,7 +21,8 @@ hosts file looks like this:
 
 ```
 #last list update: 2015-06-02T09:37:14+02:00
-#domainlist: list/BL/adv/domains 
+#For automated download use: wget "http://yourDomain/shalla2hosts.php?download" -O hosts
+#category: list/BL/adv/domains 
 127.0.0.1 000freexxx.com
 127.0.0.1 004.frnl.de
 127.0.0.1 clipsguide.com

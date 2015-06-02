@@ -20,8 +20,15 @@ After pressing download, a hosts file is sent to the user.
 hosts file looks like this:
 
 ```
-#last list update: 2015-06-02T09:37:14+02:00
-#For automated download use: wget "http://yourDomain/shalla2hosts.php?download" -O hosts
+#######################################################################################
+#This file is derived from URL blacklist maintained by http://www.shallalist.de/
+#using an automatic conversion tool: https://github.com/derStephan/shallalistToHosts
+#Note: The author of this tool is in no way connected to shalla.
+#
+#creation date: 2015-06-02T13:09:47+02:00
+#last list update: 2015-06-02T11:17:01+02:00
+#For automated download use: wget "http://10.0.0.3/develop/shalla/shalla2hosts.php?download" -O hosts
+#######################################################################################
 #category: list/BL/adv/domains 
 127.0.0.1 000freexxx.com
 127.0.0.1 004.frnl.de

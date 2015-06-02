@@ -3,10 +3,9 @@ Generate a hosts file from URL-blacklist of http://www.shallalist.de/
 
 Goal is to redirect domains of selected categories to 127.0.0.1 thus these domains are blocked on DNS basis
 
-language: PHP
-needs cURL and PHAR
+language: PHP 5, needs cURL and PHAR
 
-Installation: simply put php-file to your web-root and run it in browser.
+Installation: simply put php-file to your web-root and run it in browser. Note, that the script must be allowed to create files and folders in its own directory. 
 
 When run first, the current full blacklist is downloaded: http://www.shallalist.de/Downloads/shallalist.tar.gz
 The list is decompressed and saved to a subfolder.

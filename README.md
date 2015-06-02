@@ -1,5 +1,7 @@
 # shallalistToHost
-generate a hosts file from URL-blacklist of shalla.de to redirect domains of selected categories to 127.0.0.1
+Generate a hosts file from URL-blacklist of shalla.de
+
+Goal is to redirect domains of selected categories to 127.0.0.1 thus these domains are blocked on DNS basis
 
 language: PHP
 needs cURL and PHAR
@@ -7,9 +9,9 @@ needs cURL and PHAR
 Installation: simply put php-file to your web-root and run it in browser.
 
 When run first, the current full blacklist is downloaded: http://www.shallalist.de/Downloads/shallalist.tar.gz
-The files are decompressed and saved to a subfolder.
+The list is decompressed and saved to a subfolder.
 
-List will be downloaded and updated if last update is older than 1 week. 
+After initial download the list will be updated if last update is older than 1 week. 
 
 Based on downloaded list you can select the categories to be included in the hosts file. 
 
@@ -24,3 +26,4 @@ hosts file looks like this:
 127.0.0.1 004.frnl.de
 127.0.0.1 clipsguide.com
 ...
+```

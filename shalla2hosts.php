@@ -17,6 +17,7 @@ if($lastDownloadTime<strtotime("-1 week"))
 	@unlink("shallalist.tar");
 	downloadShallaList("http://www.shallalist.de/Downloads/shallalist.tar.gz");
 	unpackList();
+	saveDownloadTimeToFile();
 	
 	//update the time.
 	$lastDownloadTime=getLastUpdateTime();
@@ -155,12 +156,6 @@ function downloadShallaList($url)
 	// Close the cURL resource, and free system resources
 	curl_close($ch);
 	
-	//save downloadtime to file.
-	$fp=fopen("lastDownload","w");
-	fwrite($fp, time());
-	fclose($fp);
-	
-
 }
 
 function unpackList()
@@ -173,6 +168,13 @@ function unpackList()
 	$phar->extractTo('list',null,true); 
 }
 
+function saveDownloadTimeToFile()
+{
+	//save downloadtime to file.
+	$fp=fopen("lastDownload","w");
+	fwrite($fp, time());
+	fclose($fp);
+}
 
 
 

@@ -7,6 +7,7 @@ $preSelection=array("ads","hacking","music","porn","sex","spyware","violence","a
 if(!isset($_GET["selectedCategories"]))
 	$_GET["selectedCategories"]=$preSelection;
 
+//get update time of last update.
 $lastDownloadTime=getLastUpdateTime();
 
 //if local list is older than 1 week
@@ -17,6 +18,9 @@ if($lastDownloadTime<strtotime("-1 week"))
 	downloadShallaList("http://www.shallalist.de/Downloads/shallalist.tar.gz");
 	unpackList();
 }
+
+//update the time.
+$lastDownloadTime=getLastUpdateTime();
 
 //if downloadbutton is hit
 if(isset($_GET["download"]))

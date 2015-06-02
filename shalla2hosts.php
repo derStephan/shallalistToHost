@@ -1,8 +1,6 @@
-
 <?php
 
-
-//set default list, so simply adding a parameter "download" will suffice
+//set default list, so simply adding an URL-parameter "?download" will suffice
 $preSelection=array("ads","hacking","music","porn","sex","spyware","violence","adv","audio-video","tracker","warez","webradio","aggressive","drugs","podcasts","radiotv","updatesites","webtv","movies");
 if(!isset($_GET["selectedCategories"]))
 	$_GET["selectedCategories"]=$preSelection;
@@ -35,6 +33,15 @@ if(isset($_GET["download"]))
 	
 	//deliver it as download
 	header('Content-Disposition: attachment; filename="hosts"');
+	
+	//add some header information.
+	echo "#last list update: ".date("c",$lastDownloadTime)."\n";
+	echo "#For automated download use: wget \"http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]."\" -O hosts\n";
+	echo "#\n";
+	echo "#This file is derived from URL blacklist maintained by http://www.shallalist.de/\n";
+	echo "#using an automatic conversion tool: https://github.com/derStephan/shallalistToHost\n";
+	echo "#Note: The author of this tool is in no way connected to shalla.\n";
+	echo "#\n";
 	readfile($tempFileName);
 	
 	//delete temp file
@@ -69,18 +76,13 @@ function showAvailableCategorySelection($lastDownloadTime)
 		}
 		</script>
 	
-	
 	</head>
 	<body>
 		
 	last list update: <?=date("c",$lastDownloadTime);?>
 	
 	<form method="GET">
-
-	
-	
-	<input type="checkbox" value="select all" onClick="toggle(this)" id="selectAll"><label for="selectAll">toggle all</label><br/><br />	
-		
+	<input type="checkbox" value="select all" onClick="toggle(this)" id="selectAll"><label for="selectAll">toggle all</label><br/><br />		
 	<input type="submit" value="download hosts" name="download"><br />
 	<?php
 	foreach ($categoryDirectories as $categoryDirectory)
@@ -129,20 +131,14 @@ function downloadShallaList($url)
 	$ch = curl_init();
 
 	// Now set some options (most are optional)
-
 	// Set URL to download
 	curl_setopt($ch, CURLOPT_URL, $url);
-
-
 	// Include header in result? (0 = yes, 1 = no)
 	curl_setopt($ch, CURLOPT_HEADER, 0);
-
 	// Should cURL return or print out the data? (true = return, false = print)
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
 	// Timeout in seconds, pretty high!
 	curl_setopt($ch, CURLOPT_TIMEOUT, 1000);
-
 	// Download the given URL, and save output
 	$contents = curl_exec($ch);
 
@@ -204,9 +200,8 @@ function writeDomainsToHosts($filePath,$hostsFilename,$lastDownloadTime)
 {
 	$domains=fopen($filePath,"r");
 	$hosts=fopen($hostsFilename,"a");
-	
-	fwrite($hosts,"#last list update: ".date("c",$lastDownloadTime)."\n");
-	fwrite($hosts,"#domainlist: $filePath \n");
+	//add heading for upcoming list.
+	fwrite($hosts,"#category: $filePath \n");
 	while($line = fgets($domains))
 	{
 		fwrite($hosts,"127.0.0.1 $line");

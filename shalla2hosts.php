@@ -2,8 +2,11 @@
 
 //set default list, so simply adding an URL-parameter "?download" will suffice
 $preSelection=array("ads","hacking","music","porn","sex","spyware","violence","adv","audio-video","tracker","warez","webradio","aggressive","drugs","podcasts","radiotv","updatesites","webtv","movies");
-if(!isset($_GET["selectedCategories"]))
-	$_GET["selectedCategories"]=$preSelection;
+//use selected categories or use defaults.
+if(isset($_GET["c"]))
+	$selectedCategories=$_GET["c"];
+else
+	$selectedCategories=$preSelection;
 
 //get update time of last update.
 $lastDownloadTime=getLastUpdateTime();
@@ -26,7 +29,7 @@ if(isset($_GET["download"]))
 	$tempFileName="hosts".mt_rand();
 	
 	//add each selected category to hosts-file
-	foreach ($_GET["selectedCategories"] as $category)
+	foreach ($selectedCategories as $category)
 	{
 		assembleHostsFile($category,$tempFileName);
 	}
@@ -50,16 +53,14 @@ if(isset($_GET["download"]))
 else
 {
 	//if downloadbutton is not pressed, show list.
-	showAvailableCategorySelection($lastDownloadTime);
+	showAvailableCategorySelection($lastDownloadTime, $selectedCategories);
 }
 
 
-function showAvailableCategorySelection($lastDownloadTime)
+function showAvailableCategorySelection($lastDownloadTime, $selectedCategories)
 {
 	//get main categories from list
 	$categoryDirectories=glob("list/BL/*");
-	//get already checked categories
-	$selectedCategories=$_GET["selectedCategories"];
 
 	?>
 	<!DOCTYPE html>
@@ -68,7 +69,7 @@ function showAvailableCategorySelection($lastDownloadTime)
 		<script type="text/javascript">
 		function toggle(source) 
 		{
-			checkboxes = document.getElementsByName('selectedCategories[]');
+			checkboxes = document.getElementsByName('c[]');
 			for(var i=0, n=checkboxes.length;i<n;i++) 
 			{
 				checkboxes[i].checked = source.checked;
@@ -92,7 +93,7 @@ function showAvailableCategorySelection($lastDownloadTime)
 			$category=explode("/",$categoryDirectory);
 			$category=$category[2];
 			?>
-			<input type="checkbox" name="selectedCategories[]" value="<?=$category?>" id="<?=$category?>" <?php if(in_array($category,@$selectedCategories)) echo "checked"; ?>><label for="<?=$category?>"><?=$category?></label><br />
+			<input type="checkbox" name="c[]" value="<?=$category?>" id="<?=$category?>" <?php if(in_array($category,@$selectedCategories)) echo "checked"; ?>><label for="<?=$category?>"><?=$category?></label><br />
 
 			<?php
 		}

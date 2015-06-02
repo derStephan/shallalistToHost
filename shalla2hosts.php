@@ -137,8 +137,8 @@ function downloadShallaList($url)
 	// Should cURL return or print out the data? (true = return, false = print)
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-	// Timeout in seconds
-	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+	// Timeout in seconds, pretty high!
+	curl_setopt($ch, CURLOPT_TIMEOUT, 1000);
 
 	// Download the given URL, and save output
 	$contents = curl_exec($ch);

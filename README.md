@@ -1,3 +1,6 @@
+## ⚠️shalla does not publish any lists anymore which renders this software pretty useless. I am sorry.
+
+
 # shallalistToHosts
 Generate a hosts file from URL-blacklist of http://www.shallalist.de/
 
